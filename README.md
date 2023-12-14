@@ -29,39 +29,39 @@ API для социальной сети, в которой пользовате
 ### Как запустить проект (на Windows):
 
 Клонировать репозиторий и перейти в него в командной строке:
-```
+```bash
 git clone git@github.com:usdocs/yatube_project_api.git 
 cd yatube_project_api
 ```
 
 Cоздать и активировать виртуальное окружение:
-```
+```bash
 python -m venv venv
 source venv/Scripts/activate
 ```
 
 Обновить менеджер пакетов pip:
-```
+```bash
 python -m pip install --upgrade pip
 ```
 
 Установить зависимости из файла requirements.txt:
-```
+```bash
 pip install -r requirements.txt
 ```
 
 Перейти в каталог с manage.py
-```
+```bash
 cd yatube_api
 ```
 
 Выполнить миграции:
-```
+```bash
 python manage.py migrate
 ```
 
 Запустить проект:
-```
+```bash
 python manage.py runserver
 ```
 
@@ -72,19 +72,19 @@ API проекта возвращает ответы в формате JSON.
 
 - Получить список всех публикаций (возможно использование пользовательской 
 пагинации):
-```
+```bash
 GET /api/v1/posts/
 GET /api/v1/posts/?offset=2&limit=5/
 ```
 
 - Получить публикацию по id (где id=1):
-```
+```bash
 GET /api/v1/posts/1/
 ```
 
 - Добавление новой публикации ("text" - обязательное поле):
 **анонимные запросы запрещены*
-```
+```bash
 POST /api/v1/posts
 {
     "text": "string",
@@ -95,7 +95,7 @@ POST /api/v1/posts
 
 - Обновление публикации ("text" - обязательное поле) по id (где id=1):
 **только для автора публикации*
-```
+```bash
 PUT /api/v1/posts/1/
 {
     "text": "string",
@@ -108,25 +108,25 @@ PUT /api/v1/posts/1/
 
 - Удаление публикации по id (где id=1):
 **только для автора публикации*
-```
+```bash
 DELETE /api/posts/1/
 ```
 
 ##### 2. Работа с комментариями
 - Получение всех комментариев к публикации (где post_id=2):
-```
+```bash
 GET /api/v1/posts/2/comments/
 ```
 
 - Получение комментария к публикации по id (где post_id=2, id=1):
-```
+```bash
 GET /api/v1/posts/2/comments/1/
 ```
 
 - Добавление нового комментария ("text" - обязательное поле) к публикации 
 (где post_id=2):
 **анонимные запросы запрещены*
-```
+```bash
 POST /api/v1/posts/2/comments/
 {
     "text": "string"
@@ -136,7 +136,7 @@ POST /api/v1/posts/2/comments/
 - Обновление комментария ("text" - обязательное поле) к публикации по id 
 (где post_id=2, id=1):
 **только для автора публикации*
-```
+```bash
 PUT /api/v1/posts/2/comments/1/
 {
     "text": "string"
@@ -147,18 +147,18 @@ PUT /api/v1/posts/2/comments/1/
 
 - Удаление комментария к публикации по id (где post_id=2, id=1):
 **только для автора публикации*
-```
+```bash
 DELETE /api/v1/posts/2/comments/1/
 ```
 
 ##### 3. Работа с группами
 - Получение списка доступных сообществ:
-```
+```bash
 GET /api/v1/groups/
 ```
 
 - Получение информации о сообществе по id (где id=1):
-```
+```bash
 GET /api/v1/groups/1/
 ```
 
@@ -166,7 +166,7 @@ GET /api/v1/groups/1/
 - Получение всех подписок пользователя, сделавшего запрос (возможен поиск по 
 подпискам по параметру search):
 *анонимные запросы запрещены*
-```
+```bash
 GET /api/v1/follow/
 GET /api/v1/follow/?search=admin
 ```
@@ -174,7 +174,7 @@ GET /api/v1/follow/?search=admin
 - Подписка пользователя, от имени которого сделан запрос на пользователя, 
 переданного в теле запроса:
 *анонимные запросы запрещены*
-```
+```bash
 POST /api/v1/follow/
 {
     "following": "string"
@@ -183,7 +183,7 @@ POST /api/v1/follow/
 
 ##### 5. Работа с токенами
 - Получение JWT-токена:
-```
+```bash
 POST /api/v1/jwt/create/
 {
     "username": "string",
@@ -192,7 +192,7 @@ POST /api/v1/jwt/create/
 ```
 
 - Обновление JWT-токена:
-```
+```bash
 POST /api/v1/jwt/refresh/
 {
     "refresh": "string"
@@ -200,7 +200,7 @@ POST /api/v1/jwt/refresh/
 ```
 
 - Проверка JWT-токена:
-```
+```bash
 POST /api/v1/jwt/verify/
 {
     "token": "string"
